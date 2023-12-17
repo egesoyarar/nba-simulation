@@ -16,6 +16,36 @@
         h1 {
             color: #1e73be;
         }
+
+        section {
+            display: flex;
+            flex-direction: row; /* Make it a row to have Home and Away side by side */
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .scores {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            flex: 1;
+        }
+
+        .players {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 10px;
+            align-items: center;
+        }
+
+        .player {
+            flex: 1;
+            margin-bottom: 5px;
+        }
     </style>
     <script>
         function updateScore() {
@@ -24,7 +54,21 @@
                 .then(scores => {
                     document.getElementById('homeScore').innerText = 'Home Score: ' + scores[0];
                     document.getElementById('awayScore').innerText = 'Away Score: ' + scores[1];
+                    document.getElementById('player1').innerText = 'Player1: ' + scores[2];
+                    document.getElementById('player2').innerText = 'Player2: ' + scores[3];
+                    document.getElementById('player3').innerText = 'Player3: ' + scores[4];
+                    document.getElementById('player4').innerText = 'Player4: ' + scores[5];
+                    document.getElementById('player5').innerText = 'Player5: ' + scores[6];
+                    document.getElementById('player6').innerText = 'Player6: ' + scores[7];
+                    document.getElementById('player7').innerText = 'Player7: ' + scores[8];
+                    document.getElementById('player8').innerText = 'Player8: ' + scores[9];
+                    document.getElementById('player9').innerText = 'Player9: ' + scores[10];
+                    document.getElementById('player10').innerText = 'Player10: ' + scores[11];
                 });
+        }
+
+        function updatePlayer(playerId, score) {
+            document.getElementById(playerId).innerText = `${playerId.charAt(playerId.length - 1)}: ${score}`;
         }
 
         setInterval(updateScore, 5000); // Update every 5 seconds
@@ -35,8 +79,26 @@
         <h1>NBA Scores</h1>
     </header>
     <section>
-        <h2 id="homeScore">Home Score: 0</h2>
-        <h2 id="awayScore">Away Score: 0</h2>
+        <div class="scores">
+            <h2 id="homeScore">Home Score: 0</h2>
+            <div class="players">
+                <div class="player" id="player1">Player1: 0</div>
+                <div class="player" id="player2">Player2: 0</div>
+                <div class="player" id="player3">Player3: 0</div>
+                <div class="player" id="player4">Player4: 0</div>
+                <div class="player" id="player5">Player5: 0</div>
+            </div>
+        </div>
+        <div class="scores">
+            <h2 id="awayScore">Away Score: 0</h2>
+            <div class="players">
+                <div class="player" id="player6">Player6: 0</div>
+                <div class="player" id="Player7">Player7: 0</div>
+                <div class="player" id="player8">Player8: 0</div>
+                <div class="player" id="player9">Player9: 0</div>
+                <div class="player" id="player10">Player10: 0</div>
+            </div>
+        </div>
     </section>
 </body>
 </html>
