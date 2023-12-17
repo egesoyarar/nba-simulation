@@ -1,0 +1,42 @@
+<!-- web/static/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #1e73be;
+        }
+    </style>
+    <script>
+        function updateScore() {
+            fetch('/getScores')
+                .then(response => response.json())
+                .then(scores => {
+                    document.getElementById('homeScore').innerText = 'Home Score: ' + scores[0];
+                    document.getElementById('awayScore').innerText = 'Away Score: ' + scores[1];
+                });
+        }
+
+        setInterval(updateScore, 5000); // Update every 5 seconds
+    </script>
+</head>
+<body>
+    <header>
+        <h1>NBA Scores</h1>
+    </header>
+    <section>
+        <h2 id="homeScore">Home Score: 0</h2>
+        <h2 id="awayScore">Away Score: 0</h2>
+    </section>
+</body>
+</html>
